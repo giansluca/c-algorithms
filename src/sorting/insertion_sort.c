@@ -1,9 +1,5 @@
 #include "../various/utils.h"
 
-void insertion_sort_ite(int array[], int size);
-void insertion_sort_rec(int array[], int size);
-void insertion_sort_ex(int array[], int size, int number);
-
 /**
  * Insertion sort algorithm (iterative and recursive)
  *
@@ -27,35 +23,7 @@ void insertion_sort_ex(int array[], int size, int number);
  * Stable: Yes
  */
 
-void insertion_sort_iteration() {
-    int array[] = {4, 2, 1, 6, 8, 5, 3, 7, -4, 756, -99};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    insertion_sort_ite(array, size);
-
-    print_int_array(array, size);
-}
-
-void insertion_sort_recursion() {
-    int array[] = {4, 2, 1500, 6, 8, 0, 3, 7, -4, 756, -99};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    insertion_sort_rec(array, size);
-
-    print_int_array(array, size);
-}
-
-void insertion_sort_exercise() {
-    int array[] = {4, -1, 13, 26, 8, 35, 3, 7, -4, 756, -99};
-    int number = 10;
-    int size = sizeof(array) / sizeof(array[0]);
-
-    insertion_sort_ex(array, size, number);
-
-    print_int_array(array, size);
-}
-
-void insertion_sort_ite(int array[], int size) {
+void insertion_sort_iterative(int array[], int size) {
     int value, hole;
 
     for (int i = 1; i < size; i++) {
@@ -76,13 +44,13 @@ void insertion_sort_ite(int array[], int size) {
     }
 }
 
-void insertion_sort_rec(int array[], int size) {
+void insertion_sort_recursive(int array[], int size) {
     // base condition - if size is less than 1 return
     if (size <= 1)
         return;
 
     // recur for the size-1 times
-    insertion_sort_rec(array, size - 1);
+    insertion_sort_recursive(array, size - 1);
 
     // i'm using size as a index here, at last recursion it will be = 2, size-1
     // will pointing to the first element the one i want to start the
@@ -100,9 +68,9 @@ void insertion_sort_rec(int array[], int size) {
 }
 
 /*
- * Array of int sorting nearest to given number order (iterative)
+ * Array of int sorting nearest to given number (iterative)
  */
-void insertion_sort_ex(int array[], int size, int number) {
+void insertion_sort_nearest_to_given_number(int array[], int size, int number) {
     int value, hole;
     // loop over the number of elements except the first.
     for (int i = 1; i < size; i++) {

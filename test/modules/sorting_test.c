@@ -1,4 +1,5 @@
 #include "../../src/sorting/bubble_sort.h"
+#include "../../src/sorting/insertion_sort.h"
 #include "../../src/sorting/selection_sort.h"
 #include "../unity/unity.h"
 #include <stdio.h>
@@ -81,6 +82,46 @@ void it_should_sort_with_selection_sort_a_string_array() {
     TEST_ASSERT_EQUAL_STRING_ARRAY(expected, array, size);
 }
 
+// Insertion sort
+void it_should_sort_with_insertion_sort_iterative() {
+    // given
+    int array[] = {4, 2, 1, 6, 8, 5, 3, 7, -4, 756, -9, -89};
+    int size = sizeof(array) / sizeof(array[0]);
+
+    // when
+    insertion_sort_iterative(array, size);
+
+    // then
+    int expected[] = {-89, -9, -4, 1, 2, 3, 4, 5, 6, 7, 8, 756};
+    TEST_ASSERT_EQUAL_INT_ARRAY(expected, array, size);
+}
+
+void it_should_sort_with_insertion_sort_recursive() {
+    // given
+    int array[] = {5630, 4, 2, 1, 6, 3500, 8, 5, 3, 7, -4, 756, -9, -89};
+    int size = sizeof(array) / sizeof(array[0]);
+
+    // when
+    insertion_sort_recursive(array, size);
+
+    // then
+    int expected[] = {-89, -9, -4, 1, 2, 3, 4, 5, 6, 7, 8, 756, 3500, 5630};
+    TEST_ASSERT_EQUAL_INT_ARRAY(expected, array, size);
+}
+
+void it_should_sort_nearest_to_given_number() {
+    // given
+    int array[] = {4, -1, 13, 26, 8, 35, 3, 7, -4, 756, -99, 11};
+    int number = 10;
+    int size = sizeof(array) / sizeof(array[0]);
+
+    insertion_sort_nearest_to_given_number(array, size, number);
+
+    // then
+    int expected[] = {11, 8, 13, 7, 4, 3, -1, -4, 26, 35, -99, 756};
+    TEST_ASSERT_EQUAL_INT_ARRAY(expected, array, size);
+}
+
 int main() {
     UNITY_BEGIN();
 
@@ -93,6 +134,11 @@ int main() {
     RUN_TEST(it_should_sort_with_selection_sort_iterative);
     RUN_TEST(it_should_sort_with_selection_sort_recursive);
     RUN_TEST(it_should_sort_with_selection_sort_a_string_array);
+
+    // Insertion sort
+    RUN_TEST(it_should_sort_with_insertion_sort_iterative);
+    RUN_TEST(it_should_sort_with_insertion_sort_recursive);
+    RUN_TEST(it_should_sort_nearest_to_given_number);
 
     return UNITY_END();
 }
