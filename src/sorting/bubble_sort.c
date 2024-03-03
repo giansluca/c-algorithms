@@ -81,7 +81,7 @@ void bubble_sort_rec(int array[], int size) {
 
     bool flag = false;
     // one pass of normal bubble sort, to fix the last element (max value) of
-    // current subarray.
+    // current sub-array.
     for (int i = 0; i < size - 1; i++) {
         if (array[i] > array[i + 1]) {
             // if next element is smaller then swap.
@@ -96,7 +96,7 @@ void bubble_sort_rec(int array[], int size) {
         return;
     }
 
-    // recur for all elements except last of current subarray.
+    // recur for all elements except last of current sub-array.
     bubble_sort_rec(array, size - 1);
 }
 
