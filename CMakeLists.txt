@@ -31,7 +31,7 @@ add_subdirectory(test)
 
 # unit tests
 enable_testing()
-add_test(NAME BubbleSort COMMAND bubble_sort_test)
+add_test(NAME Sorting COMMAND sorting_test)
 list(APPEND CMAKE_CTEST_ARGUMENTS "--verbose")
 
 # Example --> commands from project root

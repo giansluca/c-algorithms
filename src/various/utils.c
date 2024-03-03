@@ -16,7 +16,7 @@ void print_char_array(char array[]) {
     }
 }
 
-void print_string_array(char array[][MAX_LEN_01], int size) {
+void print_string_array(char *array[], int size) {
     for (int i = 0; i < size; i++) {
         printf("%s\n", array[i]);
     }
@@ -34,12 +34,10 @@ void swap_char_in_array(char *a, char *b) {
     *b = temp;
 }
 
-void swap_string_in_array(char *a, char *b) {
-    char temp[MAX_LEN_01];
-
-    strcpy(temp, a);
-    strcpy(a, b);
-    strcpy(b, temp);
+void swap_string_in_array(char **a, char **b) {
+    char *temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 int numbers_distance(int num1, int num2) {

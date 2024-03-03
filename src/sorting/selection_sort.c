@@ -1,10 +1,6 @@
 #include "../various/utils.h"
 #include <string.h>
 
-void selection_sort_ite(int array[], int size);
-void selection_sort_rec(int array[], int size, int i);
-void selection_sort_ex(char array[][MAX_LEN_01], int size);
-
 /**
  * Selection sort algorithm (iterative and recursive)
  *
@@ -20,35 +16,7 @@ void selection_sort_ex(char array[][MAX_LEN_01], int size);
  * Stable: no
  */
 
-void selection_sort_iteration() {
-    int array[] = {4, 300, 1, 0, 8, 5, 3, 7, -4};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    selection_sort_ite(array, size);
-
-    print_int_array(array, size);
-}
-
-void selection_sort_recursion() {
-    int array[] = {4, 300, 1, 0, 8, 5, 3, 7, -4, 900};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    selection_sort_rec(array, size, 0);
-
-    print_int_array(array, size);
-}
-
-void selection_sort_exercise() {
-    char array[][MAX_LEN_01] = {"aa", "paper", "true", "soap", "floppy",
-                                "flower", "gigi", "zzz", "aaa"};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    selection_sort_ex(array, size);
-
-    print_string_array(array, size);
-}
-
-void selection_sort_ite(int array[], int size) {
+void selection_sort_iterative(int array[], int size) {
     int i_min;
 
     // after size-1 passes we are guaranteed that the array is sorted.
@@ -71,7 +39,7 @@ void selection_sort_ite(int array[], int size) {
     }
 }
 
-void selection_sort_rec(int array[], int size, int i) {
+void selection_sort_recursive(int array[], int size, int i) {
     // base case - return when start position and size are same.
     if (i == size)
         return;
@@ -92,10 +60,10 @@ void selection_sort_rec(int array[], int size, int i) {
     }
 
     // recur for all elements except first of current subarray.
-    selection_sort_rec(array, size, i + 1);
+    selection_sort_recursive(array, size, i + 1);
 }
 
-void selection_sort_ex(char array[][MAX_LEN_01], int size) {
+void selection_sort_string_array(char *array[], int size) {
     int i_min;
     // after size-1 passes we are guaranteed that the array is sorted.
     for (int i = 0; i < size - 1; i++) {
@@ -113,7 +81,7 @@ void selection_sort_ex(char array[][MAX_LEN_01], int size) {
         // if i have a new minimum, swap the found minimum element with the
         // first element.
         if (i_min != i) {
-            swap_string_in_array(array[i], array[i_min]);
+            swap_string_in_array(&array[i], &array[i_min]);
         }
     }
 }

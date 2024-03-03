@@ -2,10 +2,6 @@
 #include <stdbool.h>
 #include <string.h>
 
-void bubble_sort_ite(int array[], int size);
-void bubble_sort_rec(int array[], int size);
-void bubble_sort_ex(char array[][MAX_LEN_01], int size);
-
 /**
  * Bubble sort algorithm (iterative and recursive)
  *
@@ -23,35 +19,7 @@ void bubble_sort_ex(char array[][MAX_LEN_01], int size);
  * Stable: yes
  */
 
-void bubble_sort_iteration() {
-    int array[] = {4, 2, 1, 6, 8, 5, 3, 7, -4, 756};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    bubble_sort_ite(array, size);
-
-    print_int_array(array, size);
-}
-
-void bubble_sort_recursion() {
-    int array[] = {4, 2, 1, 6, 8, 5, 3, 7, -4, 756, -9, -89};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    bubble_sort_rec(array, size);
-
-    print_int_array(array, size);
-}
-
-void bubble_sort_exercise() {
-    char array[][MAX_LEN_01] = {"aa", "xx", "paper", "true", "soap",
-                                "22", "flower", "gigi", "zzz", "aaa"};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    bubble_sort_ex(array, size);
-
-    print_string_array(array, size);
-}
-
-void bubble_sort_ite(int array[], int size) {
+void bubble_sort_iterative(int array[], int size) {
     bool flag;
 
     // after size-1 passes we are guaranteed that the array is sorted.
@@ -74,7 +42,7 @@ void bubble_sort_ite(int array[], int size) {
     }
 }
 
-void bubble_sort_rec(int array[], int size) {
+void bubble_sort_recursive(int array[], int size) {
     // base case - return when the size is equal to 1, the array is sorted.
     if (size == 1)
         return;
@@ -97,10 +65,10 @@ void bubble_sort_rec(int array[], int size) {
     }
 
     // recur for all elements except last of current sub-array.
-    bubble_sort_rec(array, size - 1);
+    bubble_sort_recursive(array, size - 1);
 }
 
-void bubble_sort_ex(char array[][MAX_LEN_01], int size) {
+void bubble_sort_string_array(char *array[], int size) {
     bool flag;
 
     // after size-1 passes we are guaranteed that the array is sorted.
@@ -111,7 +79,7 @@ void bubble_sort_ex(char array[][MAX_LEN_01], int size) {
             // compare the actual string with the next, if the left string
             // bigger then swap.
             if (strcmp(array[k], array[k + 1]) > 0) {
-                swap_string_in_array(array[k], array[k + 1]);
+                swap_string_in_array(&array[k], &array[k + 1]);
                 flag = true;
             }
         }
