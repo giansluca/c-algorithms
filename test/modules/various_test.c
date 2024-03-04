@@ -1,3 +1,5 @@
+#include "../../src/various/factorial.h"
+#include "../../src/various/fibonacci.h"
 #include "../../src/various/string_concat.h"
 #include "../../src/various/string_permutations.h"
 #include "../../src/various/utils.h"
@@ -65,35 +67,47 @@ void it_should_test_string_combinations_k() {
 // Factorial
 void it_should_calculate_factorial_iterative() {
     // given
+    int number = 5;
 
     // when
+    int factorial = factorial_iterative(number);
 
     // then
+    TEST_ASSERT_EQUAL_INT(120, factorial);
 }
 
 void it_should_calculate_factorial_recursive() {
     // given
+    int number = 6;
 
     // when
+    int factorial = factorial_recursive(number);
 
     // then
+    TEST_ASSERT_EQUAL_INT(720, factorial);
 }
 
 // Fibonacci
 void it_should_calculate_fibonacci_iterative() {
     // given
+    int number = 9;
 
     // when
+    int fib = fibonacci_iterative(number);
 
     // then
+    TEST_ASSERT_EQUAL_INT(34, fib);
 }
 
 void it_should_calculate_fibonacci_recursive() {
     // given
+    int number = 15;
 
     // when
+    int fib = fibonacci_recursive(number);
 
     // then
+    TEST_ASSERT_EQUAL_INT(610, fib);
 }
 
 int main() {

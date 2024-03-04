@@ -1,7 +1,7 @@
 #ifndef ALGORITHMS_FIBONACCI_H
 #define ALGORITHMS_FIBONACCI_H
 
-void fibonacci_recursion();
-void fibonacci_iteration();
+int fibonacci_recursive(int number);
+int fibonacci_iterative(int number);
 
 #endif // ALGORITHMS_FIBONACCI_H
