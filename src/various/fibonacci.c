@@ -4,7 +4,7 @@ int fibonacci_rec(int number);
 int fibonacci_ite(int number);
 
 /**
- * Fibonaci number is the sum of two previous fibonacci numbers
+ * Fibonacci number is the sum of two previous fibonacci numbers
  */
 
 void fibonacci_recursion() {

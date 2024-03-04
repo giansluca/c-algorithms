@@ -14,6 +14,7 @@ void print_char_array(char array[]) {
         printf("%c", array[i]);
         i++;
     }
+    puts("\n");
 }
 
 void print_string_array(char *array[], int size) {

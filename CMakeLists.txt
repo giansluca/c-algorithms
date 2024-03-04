@@ -32,6 +32,7 @@ add_subdirectory(test)
 # unit tests
 enable_testing()
 add_test(NAME Sorting COMMAND sorting_test)
+add_test(NAME Various COMMAND various_test)
 list(APPEND CMAKE_CTEST_ARGUMENTS "--verbose")
 
 # Example --> commands from project root

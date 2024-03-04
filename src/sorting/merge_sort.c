@@ -1,9 +1,7 @@
 #include "../various/utils.h"
 
-void merge_sort_rec(int array[], int left, int right);
-void merge_sort_ite(int array[], int size);
-void merge(int array[], int left, int mid, int right);
-int min(int x, int y);
+void _merge(int array[], int left, int mid, int right);
+int _min(int x, int y);
 
 /**
  * Merge sort algorithm (recursive and iterative)
@@ -19,23 +17,7 @@ int min(int x, int y);
  * Stable: yes
  */
 
-void merge_sort_recursion() {
-    int array[] = {4, 2, 1, 6, 8, 1705, 3, 7, -4, 756, -99, 0};
-    int size = sizeof(array) / sizeof(array[0]);
-    merge_sort_rec(array, 0, size - 1);
-
-    print_int_array(array, size);
-}
-
-void merge_sort_iteration() {
-    int array[] = {4, 2, 1, 6, 8, 1705, 3, 7, -4, 756, -99, 0};
-    int size = sizeof(array) / sizeof(array[0]);
-    merge_sort_ite(array, size);
-
-    print_int_array(array, size);
-}
-
-void merge_sort_rec(int array[], int left, int right) {
+void merge_sort_recursive(int array[], int left, int right) {
     // base case - if left index is equal to right index, array is size one
     // element and it is ordered.
     if (left >= right)
@@ -46,17 +28,17 @@ void merge_sort_rec(int array[], int left, int right) {
 
     // recursive call to divide array in sub array until to each array is
     // size 1.
-    merge_sort_rec(array, left, mid);
-    merge_sort_rec(array, mid + 1, right);
+    merge_sort_recursive(array, left, mid);
+    merge_sort_recursive(array, mid + 1, right);
 
     // merge let and right
-    merge(array, left, mid, right);
+    _merge(array, left, mid, right);
 }
 
-void merge_sort_ite(int array[], int size) {
-    int curr_size;  // for current size of subarrays to be merged - curr_size
+void merge_sort_iterative(int array[], int size) {
+    int curr_size;  // for current size of sub-arrays to be merged - curr_size
                     // varies from 1 to n/2.
-    int left_start; // for picking starting index of left subarray to be merged.
+    int left_start; // for picking starting index of left sub-array to be merged.
 
     // Merge sub arrays in bottom up manner.  First merge sub arrays of
     // size 1 to create sorted sub arrays of size 2, then merge sub arrays
@@ -65,19 +47,19 @@ void merge_sort_ite(int array[], int size) {
         // pick starting point of different sub arrays of current size
         for (left_start = 0; left_start < size - 1;
              left_start += 2 * curr_size) {
-            // find ending point of left subarray. mid+1 is starting point of
+            // find ending point of left sub-array. mid+1 is starting point of
             // right
-            int mid = min(left_start + curr_size - 1, size - 1);
-            int right_end = min(left_start + 2 * curr_size - 1, size - 1);
+            int mid = _min(left_start + curr_size - 1, size - 1);
+            int right_end = _min(left_start + 2 * curr_size - 1, size - 1);
 
             // merge
-            merge(array, left_start, mid, right_end);
+            _merge(array, left_start, mid, right_end);
         }
     }
 }
 
-void merge(int array[], int left, int mid, int right) {
-    // merge two unsorted subarray in a sorted array.
+void _merge(int array[], int left, int mid, int right) {
+    // merge two unsorted sub-array in a sorted array.
     int i, j, k;
 
     // calculate left and right arrays size.
@@ -98,9 +80,9 @@ void merge(int array[], int left, int mid, int right) {
     }
 
     // Merge the temp arrays back into a sorted array[l..r].
-    i = 0;    // Initial index of first subarray.
-    j = 0;    // Initial index of second subarray.
-    k = left; // Initial index of merged subarray.
+    i = 0;    // Initial index of first sub-array.
+    j = 0;    // Initial index of second sub-array.
+    k = left; // Initial index of merged sub-array.
 
     while (i < left_size && j < right_size) {
         if (left_arr[i] <= right_arr[j]) {
@@ -128,6 +110,6 @@ void merge(int array[], int left, int mid, int right) {
     }
 }
 
-int min(int x, int y) {
+int _min(int x, int y) {
     return (x < y) ? x : y;
 }

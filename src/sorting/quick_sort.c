@@ -1,8 +1,6 @@
 #include "../various/utils.h"
 
-void quick_sort_rec(int array[], int start, int end);
-void quick_sort_ite(int array[], int start, int end);
-int partition(int array[], int start, int end);
+int _partition(int array[], int start, int end);
 
 /**
  * Quick sort algorithm (recursive and iterative)
@@ -22,36 +20,20 @@ int partition(int array[], int start, int end);
  * Stable: no
  */
 
-void quick_sort_recursion() {
-    int array[] = {4, 2, 1, 6, 8, 1705, 3, 7, -4, 756, -99, -600};
-    int size = sizeof(array) / sizeof(array[0]);
-    quick_sort_rec(array, 0, size - 1);
-
-    print_int_array(array, size);
-}
-
-void quick_sort_iteration() {
-    int array[] = {4, 2, 1, 6, 8, 1705, 3, 7, -4, 756, -99, -600};
-    int size = sizeof(array) / sizeof(array[0]);
-    quick_sort_ite(array, 0, size - 1);
-
-    print_int_array(array, size);
-}
-
-void quick_sort_rec(int array[], int start, int end) {
+void quick_sort_recursive(int array[], int start, int end) {
     // base case - if the sub array is one element then exit recursion.
     if (start >= end)
         return;
 
     // partition the sub array.
-    int p_index = partition(array, start, end);
+    int p_index = _partition(array, start, end);
 
     // recursive call.
-    quick_sort_rec(array, start, p_index - 1);
-    quick_sort_rec(array, p_index + 1, end);
+    quick_sort_recursive(array, start, p_index - 1);
+    quick_sort_recursive(array, p_index + 1, end);
 }
 
-void quick_sort_ite(int array[], int start, int end) {
+void quick_sort_iterative(int array[], int start, int end) {
     // Create an auxiliary stack.
     int stack[end - start + 1];
     // initialize top of stack.
@@ -66,7 +48,7 @@ void quick_sort_ite(int array[], int start, int end) {
         end = stack[top--];
         start = stack[top--];
         // partition the sub array.
-        int pIndex = partition(array, start, end);
+        int pIndex = _partition(array, start, end);
 
         // If there are elements on left side of pivot,
         // then push left side to stack
@@ -84,7 +66,7 @@ void quick_sort_ite(int array[], int start, int end) {
     }
 }
 
-int partition(int array[], int start, int end) {
+int _partition(int array[], int start, int end) {
     // choose  the last element as the pivot element.
     int pivot = array[end];
     int p_index = start;

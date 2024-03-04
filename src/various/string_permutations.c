@@ -1,34 +1,9 @@
+#include "string_permutations.h"
 #include "../various/utils.h"
 #include <stdio.h>
 #include <string.h>
 
-#define K_MAX 3
-void string_combinations_k(char set[], char prefix[], int k, int set_len,
-                           long *count);
-void string_permutation(char set[], int start, int set_len, long *count);
-
-void combinations_k_length() {
-    char set[] = "abcdefghijklmnopqrstuvwxyz";
-    // char set[] = "abcd";
-    int k = K_MAX;
-    char prefix[K_MAX + 1] = {0};
-
-    int set_len = (int)strlen(set);
-    long count = 0;
-
-    string_combinations_k(set, prefix, k, set_len, &count);
-}
-
-void permutation() {
-    char set[] = "abc";
-    int set_len = (int)strlen(set);
-    long count = 0;
-
-    string_permutation(set, 0, set_len, &count);
-}
-
-void string_combinations_k(char set[], char prefix[], int k, int set_len,
-                           long *count) {
+void string_combinations_k(char set[], char prefix[], int k, int set_len, long *count) {
     // base condition - if k is equal to 0 then return
     if (k == 0) {
         // increase the counter to count all the permutations
@@ -50,8 +25,7 @@ void string_combinations_k(char set[], char prefix[], int k, int set_len,
 }
 
 void string_permutation(char set[], int start, int set_len, long *count) {
-    // base condition - if start is equal to last element of the array then
-    // print and return
+    // base condition - if start is equal to last element index of the array then print and return
     if (start == set_len - 1) {
         (*count)++;
         printf("%s --> %li\n", set, *count);
