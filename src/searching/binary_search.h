@@ -1,11 +1,11 @@
+#include <stdbool.h>
+
 #ifndef ALGORITHMS_BINARY_SEARCH_H
 #define ALGORITHMS_BINARY_SEARCH_H
 
-void binary_search_iteration();
-void binary_search_recursion();
-void bs_first_last_occurrence();
-void bs_count_occurrences();
-void bs_rotated_count();
-void bs_search_rotated_array();
+int binary_search_iterative(int array[], int size, int x);
+int binary_search_recursive(int array[], int start, int end, int x);
+int binary_search_first_or_last_occurrence(int array[], int size, int x, bool search_first);
+int binary_search_count_occurrences(int array[], int size, int x);
 
-#endif //ALGORITHMS_BINARY_SEARCH_H
+#endif // ALGORITHMS_BINARY_SEARCH_H

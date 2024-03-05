@@ -33,6 +33,7 @@ add_subdirectory(test)
 enable_testing()
 add_test(NAME Sorting COMMAND sorting_test)
 add_test(NAME Various COMMAND various_test)
+add_test(NAME Searching COMMAND searching_test)
 list(APPEND CMAKE_CTEST_ARGUMENTS "--verbose")
 
 # Example --> commands from project root

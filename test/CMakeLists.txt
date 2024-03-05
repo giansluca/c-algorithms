@@ -12,3 +12,7 @@ target_link_libraries(sorting_test PRIVATE algorithms unity-framework)
 add_executable(various_test)
 target_sources(various_test PRIVATE modules/various_test.c)
 target_link_libraries(various_test PRIVATE algorithms unity-framework)
+
+add_executable(searching_test)
+target_sources(searching_test PRIVATE modules/searching_test.c)
+target_link_libraries(searching_test PRIVATE algorithms unity-framework)
